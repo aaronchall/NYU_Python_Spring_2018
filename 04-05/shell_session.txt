@@ -1,0 +1,400 @@
+$ python
+Python 3.6.4 |Anaconda custom (64-bit)| (default, Mar 13 2018, 01:15:57) 
+[GCC 7.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pandas
+>>> import flask
+>>> import requests
+>>> import sklearn
+>>> import bs4
+>>> hash('key')
+4509147088765971672
+>>> bin(hash('key'))
+'0b11111010010011101101010110001100000001111000011110110011011000'
+>>> hash([])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+>>> a_list = []
+>>> hash(a_list)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+>>> a_list.extend('abc')
+>>> a_list
+['a', 'b', 'c']
+>>> hash(())
+3527539
+>>> hash((1,))
+3430019387558
+>>> hash((1,2))
+3713081631934410656
+>>> hash((1,2,3))
+2528502973977326415
+>>> {1,2,3}
+{1, 2, 3}
+>>> {1,2,[]}
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+>>> {1,2,frozenset([1,2,3])}
+{1, 2, frozenset({1, 2, 3})}
+>>> dir(tuple)
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'count', 'index']
+>>> (1,2) + 3, 4
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: can only concatenate tuple (not "int") to tuple
+>>> (1,2) + (3, 4)
+(1, 2, 3, 4)
+>>> # [fn(item) for item in an_iterable if filter_fn(item)]
+... 
+>>> [name for name in dir(tuple) if name[0] != '_']
+['count', 'index']
+>>> def api(obj):
+...     return [n for n in dir(obj) if name[0] != '_']
+... 
+>>> api(tuple)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 2, in api
+  File "<stdin>", line 2, in <listcomp>
+NameError: name 'name' is not defined
+>>> def api(obj):
+...     return [n for n in dir(obj) if n[0] != '_']
+... 
+>>> api(tuple)
+['count', 'index']
+>>> api(list)
+['append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+>>> set(api(list)) - set(api(tuple))
+{'sort', 'pop', 'extend', 'insert', 'clear', 'copy', 'remove', 'append', 'reverse'}
+>>> set(api(tuple)) - set(api(list))
+set()
+>>> sorted(set(api(list)) - set(api(tuple)))
+['append', 'clear', 'copy', 'extend', 'insert', 'pop', 'remove', 'reverse', 'sort']
+>>> append
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'append' is not defined
+>>> format
+<built-in function format>
+>>> len
+<built-in function len>
+>>> print
+<built-in function print>
+>>> type
+<class 'type'>
+>>> type(a_list)
+<class 'list'>
+>>> class = 'foo'
+  File "<stdin>", line 1
+    class = 'foo'
+          ^
+SyntaxError: invalid syntax
+>>> type = 'foo'
+>>> del type
+>>> type(type)
+<class 'type'>
+>>> isinstance(object, type)
+True
+>>> isinstance(type, object)
+True
+>>> isinstance(str, object)
+True
+>>> isinstance('', object)
+True
+>>> isinstance('', type)
+False
+>>> isinstance(str, type)
+True
+>>> zip
+<class 'zip'>
+>>> range
+<class 'range'>
+>>> r10 = range(10)
+>>> list(r10)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> 5 in r10
+True
+>>> a_list
+['a', 'b', 'c']
+>>> a_list.clear()
+>>> a_list
+[]
+>>> a_list.append('a')
+>>> a_list
+['a']
+>>> a_list.extend('a')
+>>> a_list
+['a', 'a']
+>>> a_list.append('apple')
+>>> a_list
+['a', 'a', 'apple']
+>>> a_list.extend('apple')
+>>> a_list
+['a', 'a', 'apple', 'a', 'p', 'p', 'l', 'e']
+>>> api(dict)
+['clear', 'copy', 'fromkeys', 'get', 'items', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values']
+>>> dict.fromkeys('abc')
+{'a': None, 'b': None, 'c': None}
+>>> dict.fromkeys('abc', [])
+{'a': [], 'b': [], 'c': []}
+>>> a_dict = dict.fromkeys('abc', [])
+>>> a_dict['a'].append('foo')
+>>> a_dict
+{'a': ['foo'], 'b': ['foo'], 'c': ['foo']}
+>>> a_dict.get('a')
+['foo']
+>>> a_dict.get('a').clear()
+>>> a_dict
+{'a': [], 'b': [], 'c': []}
+>>> a_dict.get('d')
+>>> print(a_dict.get('d'))
+None
+>>> api(set)
+['add', 'clear', 'copy', 'difference', 'difference_update', 'discard', 'intersection', 'intersection_update', 'isdisjoint', 'issubset', 'issuperset', 'pop', 'remove', 'symmetric_difference', 'symmetric_difference_update', 'union', 'update']
+>>> api(frozenset)
+['copy', 'difference', 'intersection', 'isdisjoint', 'issubset', 'issuperset', 'symmetric_difference', 'union']
+>>> set(api(set)) - set(api(frozenset))
+{'discard', 'pop', 'symmetric_difference_update', 'update', 'difference_update', 'intersection_update', 'clear', 'remove', 'add'}
+>>> api(str)
+['capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+>>> from pprint import pprint as pp
+>>> pp(api(str))
+['capitalize',
+ 'casefold',
+ 'center',
+ 'count',
+ 'encode',
+ 'endswith',
+ 'expandtabs',
+ 'find',
+ 'format',
+ 'format_map',
+ 'index',
+ 'isalnum',
+ 'isalpha',
+ 'isdecimal',
+ 'isdigit',
+ 'isidentifier',
+ 'islower',
+ 'isnumeric',
+ 'isprintable',
+ 'isspace',
+ 'istitle',
+ 'isupper',
+ 'join',
+ 'ljust',
+ 'lower',
+ 'lstrip',
+ 'maketrans',
+ 'partition',
+ 'replace',
+ 'rfind',
+ 'rindex',
+ 'rjust',
+ 'rpartition',
+ 'rsplit',
+ 'rstrip',
+ 'split',
+ 'splitlines',
+ 'startswith',
+ 'strip',
+ 'swapcase',
+ 'title',
+ 'translate',
+ 'upper',
+ 'zfill']
+>>> help(str.count)
+
+>>> {1:'a'}[:]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'slice'
+>>> a_dict
+{'a': [], 'b': [], 'c': []}
+>>> a_dict['a']
+[]
+>>> a_lsit
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'a_lsit' is not defined
+>>> a_list
+['a', 'a', 'apple', 'a', 'p', 'p', 'l', 'e']
+>>> a_list[1:-1]
+['a', 'apple', 'a', 'p', 'p', 'l']
+>>> a_list[1:]
+['a', 'apple', 'a', 'p', 'p', 'l', 'e']
+>>> a_list[:]
+['a', 'a', 'apple', 'a', 'p', 'p', 'l', 'e']
+>>> r = range(1, 10, 3)
+>>> r
+range(1, 10, 3)
+>>> list(r)
+[1, 4, 7]
+>>> a_list[::]
+['a', 'a', 'apple', 'a', 'p', 'p', 'l', 'e']
+>>> a_list[None:None:None]
+['a', 'a', 'apple', 'a', 'p', 'p', 'l', 'e']
+>>> a_list[None:None:None:None]
+  File "<stdin>", line 1
+    a_list[None:None:None:None]
+                         ^
+SyntaxError: invalid syntax
+>>> slice
+<class 'slice'>
+>>> zero_to_ten_by_three = slice(0, 10, 3)
+>>> zero_to_ten_by_three
+slice(0, 10, 3)
+>>> a_list = list(range(100))
+>>> a_list
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+>>> a_list[zero_to_ten_by_three]
+[0, 3, 6, 9]
+>>> api(int)
+['bit_length', 'conjugate', 'denominator', 'from_bytes', 'imag', 'numerator', 'real', 'to_bytes']
+>>> api(float)
+['as_integer_ratio', 'conjugate', 'fromhex', 'hex', 'imag', 'is_integer', 'real']
+>>> a_str = 'this is a string'
+>>> 'is a' in a_str
+True
+>>> print(f'''here's some things we've done
+... a_list: {a_list}
+... a_dict: {a_dict}
+... api: {api}''')
+here's some things we've done
+a_list: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+a_dict: {'a': [], 'b': [], 'c': []}
+api: <function api at 0x7f69ecf318c8>
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+>>> import = 'foo'
+  File "<stdin>", line 1
+    import = 'foo'
+           ^
+SyntaxError: invalid syntax
+>>> import keyword
+>>> keyword.kwlist
+['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+>>> False = True
+  File "<stdin>", line 1
+SyntaxError: can't assign to keyword
+>>> len(keyword.kwlist)
+33
+>>> isinstance(False, bool)
+True
+>>> isinstance(False, int)
+True
+>>> False == 0
+True
+>>> True == 1
+True
+>>> sum([False, True, True, True])
+3
+>>> ''
+''
+>>> ""
+''
+>>> bool("")
+False
+>>> bool(0)
+False
+>>> bool(0.0)
+False
+>>> bool(0.01)
+True
+>>> bool("")
+False
+>>> bool(' ')
+True
+>>> bool(())
+False
+>>> bool([])
+False
+>>> bool({})
+False
+>>> bool(set())
+False
+>>> bool(frozenset())
+False
+>>> bool(range(0))
+False
+>>> 0j
+0j
+>>> bool(0j)
+False
+>>> bool(enumerate([]))
+True
+>>> bool(reversed([]))
+True
+>>> a_list
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+>>> len(a_list)
+100
+>>> del a_list[98]
+>>> a_list
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 99]
+>>> type = 'foo'
+>>> del type
+>>> type
+<class 'type'>
+>>> keyword.kwlist
+['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+>>> import builtins
+>>> help(builtins)
+
+>>> def iterate_loudly_stop_on_42(iterable):
+...     for item in iterable:
+...         print(item)
+...         if item == 42:
+...             break
+...     else:
+...         print('we are done!!!!')
+... 
+>>> iterate_loudly_stop_on_42('abcdefghijkl')
+a
+b
+c
+d
+e
+f
+g
+h
+i
+j
+k
+l
+we are done!!!!
+>>> iterate_loudly_stop_on_42([41, 42, 43, 44, 1000])
+41
+42
+>>> def iterate_loudly_stop_on_42(iterable):
+...     for item in iterable:
+...         print(item)
+...         if item == 42:
+...             return
+... 
+>>> keyword.kwlist
+['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+>>> 
