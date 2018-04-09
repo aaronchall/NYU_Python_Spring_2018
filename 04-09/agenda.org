@@ -1,0 +1,4 @@
+
+* Organize notes on the builtins and keywords
+* Write our own Python Trainer (self-quiz program)
+* Talk about the rest of the semester
