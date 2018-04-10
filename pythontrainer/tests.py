@@ -18,7 +18,19 @@ class TestCase(unittest.TestCase):
         str_api = pythontrainer.api(str)
         self.assertIn('lower', str_api)
         self.assertNotIn('__class__', str_api)
-        
+
+    def test_create_obscured_doc(self):
+        obscured_doc = pythontrainer.create_obscured_doc(print, 'print')
+        self.assertIn('(value,', obscured_doc)
+        self.assertNotIn('print', obscured_doc)
+
+    def test_builtins_data(self):
+        data = pythontrainer.BUILTINS_DATA
+        self.assertIn('introspection', data)
+        self.assertIn(type, data['introspection'])
+        self.assertIn('types', data)
+
+
 
 def main():
     unittest.main(exit=False)
