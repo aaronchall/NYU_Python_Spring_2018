@@ -8,6 +8,7 @@
 - ~git push origin master~
 - send the base repo owner a pull request from your account
 
-* TDD
-- Red  write a test that fails
-- Green write code that makes it pass
+* Test Driven Development
+- Red: write a test that fails
+- Green: write code that makes it pass
+- Refactor: clean up your code
