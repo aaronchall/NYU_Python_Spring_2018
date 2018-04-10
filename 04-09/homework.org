@@ -1,0 +1,13 @@
+Create a python program that pretty prints the PATH environment variable.
+
+e.g.:
+python -m print_path
+['/usr/local/sbin',
+ '/usr/local/bin',
+ '/usr/sbin',
+ '/usr/bin',
+ '/sbin',
+ '/bin',
+]
+
+(try to avoid looking at the hints!)

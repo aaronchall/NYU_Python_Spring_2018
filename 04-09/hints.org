@@ -1,0 +1,4 @@
+* You could use a couple of functions in the *os* module to get the variable.
+* You'll need to split it on the separators to make a list
+* You can use the pprint module, or just iterate over each part and print that.
+* If in doubt, use Google!
