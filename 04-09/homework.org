@@ -1,7 +1,8 @@
 Create a python program that pretty prints the PATH environment variable.
 
 e.g.:
-python -m print_path
+#+BEGIN_SRC 
+$ python -m print_path
 ['/usr/local/sbin',
  '/usr/local/bin',
  '/usr/sbin',
@@ -9,5 +10,5 @@ python -m print_path
  '/sbin',
  '/bin',
 ]
-
+#+END_SRC
 (try to avoid looking at the hints!)
