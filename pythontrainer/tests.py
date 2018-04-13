@@ -30,7 +30,16 @@ class TestCase(unittest.TestCase):
         self.assertIn(type, data['introspection'])
         self.assertIn('types', data)
 
+    def test_short_fn_doc(self):
+        self.assertLessEqual(len(pythontrainer.short_fn_doc(print).splitlines()), 20)
 
+    def test_list_objs_to_dict(self):
+        self.assertIsInstance(pythontrainer.list_objs_to_dict([str, bool]), dict)
+
+    def test_list_of_methods(self):
+        str_methods = pythontrainer.list_of_methods(str)
+        self.assertIsInstance(str_methods, list)
+        self.assertIn(str.upper, str_methods)
 
 def main():
     unittest.main(exit=False)
