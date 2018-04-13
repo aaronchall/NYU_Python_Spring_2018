@@ -1,0 +1,14 @@
+* Git workflow:
+
+- fork a copy from the base repo to your account
+- clone a local copy ~git clone http...~
+- edit the files
+- ~git add~ any new files
+- ~git commit -m "specific message"~
+- ~git push origin master~
+- send the base repo owner a pull request from your account
+
+* Test Driven Development
+- Red: write a test that fails
+- Green: write code that makes it pass
+- Refactor: clean up your code
