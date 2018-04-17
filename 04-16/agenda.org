@@ -1,0 +1,28 @@
+- Discuss csv - not a standard!
+  - make csv file using python builtins
+  - ~pandas.read_csv~
+  - ~df.to_json('sample.json')~
+
+- discuss json - a good standard!
+  - ~json.load~
+  - ~json.dump~
+
+- Python serialization with ~pickle~
+  - ~pickle.load~
+  - ~pickle.dump~
+
+- bytes and str
+  - byte encodings: ascii, utf-8, 16, 32, Latin... encode from str.
+  - str: Unicode - semantically text, can decode from bytes.
+  - bytes are 8 bit numbers, bits are binary digits 0, 1, 
+  - look at ASCII tables, talk about '\n' (Linux),  '\r' (Apple),  '\r\n' (Windows)
+  
+
+- FP & OOP
+- OOP method resolution order
+- OOP
+  - Encapsulation
+  - Inheritance
+  - Polymorphism
+- FP for composed functions and pipelines of data
+  
