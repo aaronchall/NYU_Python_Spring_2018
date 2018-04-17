@@ -1,0 +1,236 @@
+$ python
+Python 3.6.4 |Anaconda custom (64-bit)| (default, Mar 13 2018, 01:15:57) 
+[GCC 7.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> with open('sample.csv', 'w') as file:
+...     file.write("""name, age, location
+... Aaron, 38, Brooklyn
+... Fred, 24, Bronx
+... Susan, 26, Queens""")
+... 
+73
+>>> with open('sample.csv') as file:
+...     print(file.read())
+... 
+name, age, location
+Aaron, 38, Brooklyn
+Fred, 24, Bronx
+Susan, 26, Queens
+>>> import pandas
+>>> df = pandas.read_csv('sample.csv')
+>>> df
+    name   age   location
+0  Aaron    38   Brooklyn
+1   Fred    24      Bronx
+2  Susan    26     Queens
+>>> df.dtypes
+name         object
+ age          int64
+ location    object
+dtype: object
+>>> help(pandas.read_csv)
+
+>>> dir(df)
+['T', '_AXIS_ALIASES', '_AXIS_IALIASES', '_AXIS_LEN', '_AXIS_NAMES', '_AXIS_NUMBERS', '_AXIS_ORDERS', '_AXIS_REVERSED', '_AXIS_SLICEMAP', '__abs__', '__add__', '__and__', '__array__', '__array_wrap__', '__bool__', '__bytes__', '__class__', '__contains__', '__copy__', '__deepcopy__', '__delattr__', '__delitem__', '__dict__', '__dir__', '__div__', '__doc__', '__eq__', '__finalize__', '__floordiv__', '__format__', '__ge__', '__getattr__', '__getattribute__', '__getitem__', '__getstate__', '__gt__', '__hash__', '__iadd__', '__iand__', '__ifloordiv__', '__imod__', '__imul__', '__init__', '__init_subclass__', '__invert__', '__ior__', '__ipow__', '__isub__', '__iter__', '__itruediv__', '__ixor__', '__le__', '__len__', '__lt__', '__mod__', '__module__', '__mul__', '__ne__', '__neg__', '__new__', '__nonzero__', '__or__', '__pow__', '__radd__', '__rand__', '__rdiv__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rmod__', '__rmul__', '__ror__', '__round__', '__rpow__', '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '__setitem__', '__setstate__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__unicode__', '__weakref__', '__xor__', '_accessors', '_add_numeric_operations', '_add_series_only_operations', '_add_series_or_dataframe_operations', '_agg_by_level', '_agg_doc', '_aggregate', '_aggregate_multiple_funcs', '_align_frame', '_align_series', '_apply_broadcast', '_apply_empty_result', '_apply_raw', '_apply_standard', '_at', '_box_col_values', '_box_item_values', '_builtin_table', '_check_inplace_setting', '_check_is_chained_assignment_possible', '_check_percentile', '_check_setitem_copy', '_clear_item_cache', '_clip_with_one_bound', '_clip_with_scalar', '_combine_const', '_combine_frame', '_combine_match_columns', '_combine_match_index', '_combine_series', '_combine_series_infer', '_compare_frame', '_compare_frame_evaluate', '_consolidate', '_consolidate_inplace', '_construct_axes_dict', '_construct_axes_dict_for_slice', '_construct_axes_dict_from', '_construct_axes_from_arguments', '_constructor', '_constructor_expanddim', '_constructor_sliced', '_convert', '_count_level', '_create_indexer', '_cython_table', '_deprecations', '_dir_additions', '_dir_deletions', '_drop_axis', '_ensure_valid_index', '_expand_axes', '_flex_compare_frame', '_from_arrays', '_from_axes', '_get_agg_axis', '_get_axis', '_get_axis_name', '_get_axis_number', '_get_axis_resolvers', '_get_block_manager_axis', '_get_bool_data', '_get_cacher', '_get_index_resolvers', '_get_item_cache', '_get_numeric_data', '_get_valid_indices', '_get_value', '_get_values', '_getitem_array', '_getitem_column', '_getitem_frame', '_getitem_multilevel', '_getitem_slice', '_gotitem', '_iat', '_iget_item_cache', '_iloc', '_indexed_same', '_info_axis', '_info_axis_name', '_info_axis_number', '_info_repr', '_init_dict', '_init_mgr', '_init_ndarray', '_internal_names', '_internal_names_set', '_is_builtin_func', '_is_cached', '_is_cython_func', '_is_datelike_mixed_type', '_is_mixed_type', '_is_numeric_mixed_type', '_is_view', '_ix', '_ixs', '_join_compat', '_loc', '_maybe_cache_changed', '_maybe_update_cacher', '_metadata', '_needs_reindex_multi', '_obj_with_exclusions', '_protect_consolidate', '_reduce', '_reindex_axes', '_reindex_axis', '_reindex_columns', '_reindex_index', '_reindex_multi', '_reindex_with_indexers', '_repr_data_resource_', '_repr_fits_horizontal_', '_repr_fits_vertical_', '_repr_html_', '_repr_latex_', '_reset_cache', '_reset_cacher', '_sanitize_column', '_selected_obj', '_selection', '_selection_list', '_selection_name', '_series', '_set_as_cached', '_set_axis', '_set_axis_name', '_set_is_copy', '_set_item', '_set_value', '_setitem_array', '_setitem_frame', '_setitem_slice', '_setup_axes', '_shallow_copy', '_slice', '_stat_axis', '_stat_axis_name', '_stat_axis_number', '_take', '_to_dict_of_blocks', '_try_aggregate_string_function', '_typ', '_unpickle_frame_compat', '_unpickle_matrix_compat', '_update_inplace', '_validate_dtype', '_values', '_where', '_xs', 'abs', 'add', 'add_prefix', 'add_suffix', 'agg', 'aggregate', 'align', 'all', 'any', 'append', 'apply', 'applymap', 'as_matrix', 'asfreq', 'asof', 'assign', 'astype', 'at', 'at_time', 'axes', 'between_time', 'bfill', 'bool', 'boxplot', 'clip', 'clip_lower', 'clip_upper', 'columns', 'combine', 'combine_first', 'compound', 'copy', 'corr', 'corrwith', 'count', 'cov', 'cummax', 'cummin', 'cumprod', 'cumsum', 'describe', 'diff', 'div', 'divide', 'dot', 'drop', 'drop_duplicates', 'dropna', 'dtypes', 'duplicated', 'empty', 'eq', 'equals', 'eval', 'ewm', 'expanding', 'ffill', 'fillna', 'filter', 'first', 'first_valid_index', 'floordiv', 'from_dict', 'from_items', 'from_records', 'ftypes', 'ge', 'get', 'get_dtype_counts', 'get_ftype_counts', 'get_values', 'groupby', 'gt', 'head', 'hist', 'iat', 'idxmax', 'idxmin', 'iloc', 'index', 'infer_objects', 'info', 'insert', 'interpolate', 'is_copy', 'isin', 'isna', 'isnull', 'items', 'iteritems', 'iterrows', 'itertuples', 'ix', 'join', 'keys', 'kurt', 'kurtosis', 'last', 'last_valid_index', 'le', 'loc', 'lookup', 'lt', 'mad', 'mask', 'max', 'mean', 'median', 'melt', 'memory_usage', 'merge', 'min', 'mod', 'mode', 'mul', 'multiply', 'name', 'ndim', 'ne', 'nlargest', 'notna', 'notnull', 'nsmallest', 'nunique', 'pct_change', 'pipe', 'pivot', 'pivot_table', 'plot', 'pop', 'pow', 'prod', 'product', 'quantile', 'query', 'radd', 'rank', 'rdiv', 'reindex', 'reindex_axis', 'reindex_like', 'rename', 'rename_axis', 'reorder_levels', 'replace', 'resample', 'reset_index', 'rfloordiv', 'rmod', 'rmul', 'rolling', 'round', 'rpow', 'rsub', 'rtruediv', 'sample', 'select', 'select_dtypes', 'sem', 'set_axis', 'set_index', 'shape', 'shift', 'size', 'skew', 'slice_shift', 'sort_index', 'sort_values', 'squeeze', 'stack', 'std', 'style', 'sub', 'subtract', 'sum', 'swapaxes', 'swaplevel', 'tail', 'take', 'to_clipboard', 'to_csv', 'to_dense', 'to_dict', 'to_excel', 'to_feather', 'to_gbq', 'to_hdf', 'to_html', 'to_json', 'to_latex', 'to_msgpack', 'to_panel', 'to_parquet', 'to_period', 'to_pickle', 'to_records', 'to_sparse', 'to_sql', 'to_stata', 'to_string', 'to_timestamp', 'to_xarray', 'transform', 'transpose', 'truediv', 'truncate', 'tshift', 'tz_convert', 'tz_localize', 'unstack', 'update', 'values', 'var', 'where', 'xs']
+>>> pandas.DataFrame
+<class 'pandas.core.frame.DataFrame'>
+>>> df['name']
+0    Aaron
+1     Fred
+2    Susan
+Name: name, dtype: object
+>>> df[' age']
+0    38
+1    24
+2    26
+Name:  age, dtype: int64
+>>> df.to_json()
+'{"name":{"0":"Aaron","1":"Fred","2":"Susan"}," age":{"0":38,"1":24,"2":26}," location":{"0":" Brooklyn","1":" Bronx","2":" Queens"}}'
+>>> help(df.to_json)
+
+>>> df.to_json('sample.json')
+>>> with open('sample.json') as f:
+...     print(f.read())
+... 
+{"name":{"0":"Aaron","1":"Fred","2":"Susan"}," age":{"0":38,"1":24,"2":26}," location":{"0":" Brooklyn","1":" Bronx","2":" Queens"}}
+>>> with open('sample.csv') as f:
+...     print(f.read())
+... 
+name, age, location
+Aaron, 38, Brooklyn
+Fred, 24, Bronx
+Susan, 26, Queens
+>>> a_number = 1
+>>> import json
+>>> dir(json)
+['JSONDecodeError', 'JSONDecoder', 'JSONEncoder', '__all__', '__author__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__version__', '_default_decoder', '_default_encoder', 'codecs', 'decoder', 'detect_encoding', 'dump', 'dumps', 'encoder', 'load', 'loads', 'scanner']
+>>> df
+    name   age   location
+0  Aaron    38   Brooklyn
+1   Fred    24      Bronx
+2  Susan    26     Queens
+>>> json.loads(df.to_json())
+{'name': {'0': 'Aaron', '1': 'Fred', '2': 'Susan'}, ' age': {'0': 38, '1': 24, '2': 26}, ' location': {'0': ' Brooklyn', '1': ' Bronx', '2': ' Queens'}}
+>>> json.loads(df.to_json())['name']['0']
+'Aaron'
+>>> python_objects = json.loads(df.to_json())
+>>> type(python_objects)
+<class 'dict'>
+>>> type(python_objects['name'])
+<class 'dict'>
+>>> type(python_objects['name']['0'])
+<class 'str'>
+>>> df
+    name   age   location
+0  Aaron    38   Brooklyn
+1   Fred    24      Bronx
+2  Susan    26     Queens
+>>> df.iter
+df.iteritems(   df.iterrows(    df.itertuples(  
+>>> for row in df.iterrows():
+...     print(row)
+... 
+(0, name             Aaron
+ age                38
+ location     Brooklyn
+Name: 0, dtype: object)
+(1, name           Fred
+ age             24
+ location     Bronx
+Name: 1, dtype: object)
+(2, name           Susan
+ age              26
+ location     Queens
+Name: 2, dtype: object)
+>>> for each_tuple in df.itertuples():
+...     print(each_tuple)
+... 
+Pandas(Index=0, name='Aaron', _2=38, _3=' Brooklyn')
+Pandas(Index=1, name='Fred', _2=24, _3=' Bronx')
+Pandas(Index=2, name='Susan', _2=26, _3=' Queens')
+>>> for index, name, age, location in df.itertuples():
+...     print(index, name, age, location)
+... 
+0 Aaron 38  Brooklyn
+1 Fred 24  Bronx
+2 Susan 26  Queens
+>>> for index, name, age, location in df.itertuples():
+...     print(index, name, age, location, sep=', ')
+... 
+0, Aaron, 38,  Brooklyn
+1, Fred, 24,  Bronx
+2, Susan, 26,  Queens
+>>> help(print)
+
+>>> pandas.DataFrame
+<class 'pandas.core.frame.DataFrame'>
+>>> df
+    name   age   location
+0  Aaron    38   Brooklyn
+1   Fred    24      Bronx
+2  Susan    26     Queens
+>>> type(df)
+<class 'pandas.core.frame.DataFrame'>
+>>> df['name']
+0    Aaron
+1     Fred
+2    Susan
+Name: name, dtype: object
+>>> type(df['name'])
+<class 'pandas.core.series.Series'>
+>>> help(df)
+
+>>> import pickle
+>>> pickle.dumps(df)
+b'\x80\x03cpandas.core.frame\nDataFrame\nq\x00)\x81q\x01}q\x02(X\x05\x00\x00\x00_dataq\x03cpandas.core.internals\nBlockManager\nq\x04)\x81q\x05(]q\x06(cpandas.core.indexes.base\n_new_Index\nq\x07cpandas.core.indexes.base\nIndex\nq\x08}q\t(X\x04\x00\x00\x00dataq\ncnumpy.core.multiarray\n_reconstruct\nq\x0bcnumpy\nndarray\nq\x0cK\x00\x85q\rC\x01bq\x0e\x87q\x0fRq\x10(K\x01K\x03\x85q\x11cnumpy\ndtype\nq\x12X\x02\x00\x00\x00O8q\x13K\x00K\x01\x87q\x14Rq\x15(K\x03X\x01\x00\x00\x00|q\x16NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK?tq\x17b\x89]q\x18(X\x04\x00\x00\x00nameq\x19X\x04\x00\x00\x00 ageq\x1aX\t\x00\x00\x00 locationq\x1betq\x1cbX\x04\x00\x00\x00nameq\x1dNu\x86q\x1eRq\x1fh\x07cpandas.core.indexes.range\nRangeIndex\nq }q!(h\x1dNX\x05\x00\x00\x00startq"K\x00X\x04\x00\x00\x00stopq#K\x03X\x04\x00\x00\x00stepq$K\x01u\x86q%Rq&e]q\'(h\x0bh\x0cK\x00\x85q(h\x0e\x87q)Rq*(K\x01K\x01K\x03\x86q+h\x12X\x02\x00\x00\x00i8q,K\x00K\x01\x87q-Rq.(K\x03X\x01\x00\x00\x00<q/NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK\x00tq0b\x89C\x18&\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x00\x00\x00\x00\x00\x1a\x00\x00\x00\x00\x00\x00\x00q1tq2bh\x0bh\x0cK\x00\x85q3h\x0e\x87q4Rq5(K\x01K\x02K\x03\x86q6h\x15\x89]q7(X\x05\x00\x00\x00Aaronq8X\x04\x00\x00\x00Fredq9X\x05\x00\x00\x00Susanq:X\t\x00\x00\x00 Brooklynq;X\x06\x00\x00\x00 Bronxq<X\x07\x00\x00\x00 Queensq=etq>be]q?(h\x07h\x08}q@(h\nh\x0bh\x0cK\x00\x85qAh\x0e\x87qBRqC(K\x01K\x01\x85qDh\x15\x89]qEh\x1aatqFbh\x1dNu\x86qGRqHh\x07h\x08}qI(h\nh\x0bh\x0cK\x00\x85qJh\x0e\x87qKRqL(K\x01K\x02\x85qMh\x15\x89]qN(h\x19h\x1betqObh\x1dNu\x86qPRqQe}qRX\x06\x00\x00\x000.14.1qS}qT(X\x04\x00\x00\x00axesqUh\x06X\x06\x00\x00\x00blocksqV]qW(}qX(X\x06\x00\x00\x00valuesqYh*X\x08\x00\x00\x00mgr_locsqZcbuiltins\nslice\nq[K\x01K\x02K\x01\x87q\\Rq]u}q^(hYh5hZh[K\x00K\x04K\x02\x87q_Rq`ueustqabX\x04\x00\x00\x00_typqbX\t\x00\x00\x00dataframeqcX\t\x00\x00\x00_metadataqd]qeub.'
+>>> pickle.dumps(df, 0)
+b'ccopy_reg\n_reconstructor\np0\n(cpandas.core.frame\nDataFrame\np1\nc__builtin__\nobject\np2\nNtp3\nRp4\n(dp5\nV_data\np6\ng0\n(cpandas.core.internals\nBlockManager\np7\ng2\nNtp8\nRp9\n((lp10\ncpandas.core.indexes.base\n_new_Index\np11\n(cpandas.core.indexes.base\nIndex\np12\n(dp13\nVdata\np14\ncnumpy.core.multiarray\n_reconstruct\np15\n(cnumpy\nndarray\np16\n(L0L\ntp17\nc_codecs\nencode\np18\n(Vb\np19\nVlatin1\np20\ntp21\nRp22\ntp23\nRp24\n(L1L\n(L3L\ntp25\ncnumpy\ndtype\np26\n(VO8\np27\nL0L\nL1L\ntp28\nRp29\n(L3L\nV|\np30\nNNNL-1L\nL-1L\nL63L\ntp31\nbI00\n(lp32\nVname\np33\naV age\np34\naV location\np35\natp36\nbsVname\np37\nNstp38\nRp39\nag11\n(cpandas.core.indexes.range\nRangeIndex\np40\n(dp41\ng37\nNsVstart\np42\nL0L\nsVstop\np43\nL3L\nsVstep\np44\nL1L\nstp45\nRp46\na(lp47\ng15\n(g16\n(L0L\ntp48\ng22\ntp49\nRp50\n(L1L\n(L1L\nL3L\ntp51\ng26\n(Vi8\np52\nL0L\nL1L\ntp53\nRp54\n(L3L\nV<\np55\nNNNL-1L\nL-1L\nL0L\ntp56\nbI00\ng18\n(V&\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x00\x00\x00\x00\x00\x1a\x00\x00\x00\x00\x00\x00\x00\np57\ng20\ntp58\nRp59\ntp60\nbag15\n(g16\n(L0L\ntp61\ng22\ntp62\nRp63\n(L1L\n(L2L\nL3L\ntp64\ng29\nI00\n(lp65\nVAaron\np66\naVFred\np67\naVSusan\np68\naV Brooklyn\np69\naV Bronx\np70\naV Queens\np71\natp72\nba(lp73\ng11\n(g12\n(dp74\ng14\ng15\n(g16\n(L0L\ntp75\ng22\ntp76\nRp77\n(L1L\n(L1L\ntp78\ng29\nI00\n(lp79\ng34\natp80\nbsg37\nNstp81\nRp82\nag11\n(g12\n(dp83\ng14\ng15\n(g16\n(L0L\ntp84\ng22\ntp85\nRp86\n(L1L\n(L2L\ntp87\ng29\nI00\n(lp88\ng33\nag35\natp89\nbsg37\nNstp90\nRp91\na(dp92\nV0.14.1\np93\n(dp94\nVaxes\np95\ng10\nsVblocks\np96\n(lp97\n(dp98\nVvalues\np99\ng50\nsVmgr_locs\np100\nc__builtin__\nslice\np101\n(L1L\nL2L\nL1L\ntp102\nRp103\nsa(dp104\ng99\ng63\nsg100\ng101\n(L0L\nL4L\nL2L\ntp105\nRp106\nsasstp107\nbsV_typ\np108\nVdataframe\np109\nsV_metadata\np110\n(lp111\nsb.'
+>>> pickle.dumps(df, 1)
+b'ccopy_reg\n_reconstructor\nq\x00(cpandas.core.frame\nDataFrame\nq\x01c__builtin__\nobject\nq\x02Ntq\x03Rq\x04}q\x05(X\x05\x00\x00\x00_dataq\x06h\x00(cpandas.core.internals\nBlockManager\nq\x07h\x02Ntq\x08Rq\t(]q\n(cpandas.core.indexes.base\n_new_Index\nq\x0b(cpandas.core.indexes.base\nIndex\nq\x0c}q\r(X\x04\x00\x00\x00dataq\x0ecnumpy.core.multiarray\n_reconstruct\nq\x0f(cnumpy\nndarray\nq\x10(K\x00tq\x11c_codecs\nencode\nq\x12(X\x01\x00\x00\x00bq\x13X\x06\x00\x00\x00latin1q\x14tq\x15Rq\x16tq\x17Rq\x18(K\x01(K\x03tq\x19cnumpy\ndtype\nq\x1a(X\x02\x00\x00\x00O8q\x1bK\x00K\x01tq\x1cRq\x1d(K\x03X\x01\x00\x00\x00|q\x1eNNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK?tq\x1fbI00\n]q (X\x04\x00\x00\x00nameq!X\x04\x00\x00\x00 ageq"X\t\x00\x00\x00 locationq#etq$bX\x04\x00\x00\x00nameq%Nutq&Rq\'h\x0b(cpandas.core.indexes.range\nRangeIndex\nq(}q)(h%NX\x05\x00\x00\x00startq*K\x00X\x04\x00\x00\x00stopq+K\x03X\x04\x00\x00\x00stepq,K\x01utq-Rq.e]q/(h\x0f(h\x10(K\x00tq0h\x16tq1Rq2(K\x01(K\x01K\x03tq3h\x1a(X\x02\x00\x00\x00i8q4K\x00K\x01tq5Rq6(K\x03X\x01\x00\x00\x00<q7NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK\x00tq8bI00\nh\x12(X\x18\x00\x00\x00&\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x00\x00\x00\x00\x00\x1a\x00\x00\x00\x00\x00\x00\x00q9h\x14tq:Rq;tq<bh\x0f(h\x10(K\x00tq=h\x16tq>Rq?(K\x01(K\x02K\x03tq@h\x1dI00\n]qA(X\x05\x00\x00\x00AaronqBX\x04\x00\x00\x00FredqCX\x05\x00\x00\x00SusanqDX\t\x00\x00\x00 BrooklynqEX\x06\x00\x00\x00 BronxqFX\x07\x00\x00\x00 QueensqGetqHbe]qI(h\x0b(h\x0c}qJ(h\x0eh\x0f(h\x10(K\x00tqKh\x16tqLRqM(K\x01(K\x01tqNh\x1dI00\n]qOh"atqPbh%NutqQRqRh\x0b(h\x0c}qS(h\x0eh\x0f(h\x10(K\x00tqTh\x16tqURqV(K\x01(K\x02tqWh\x1dI00\n]qX(h!h#etqYbh%NutqZRq[e}q\\X\x06\x00\x00\x000.14.1q]}q^(X\x04\x00\x00\x00axesq_h\nX\x06\x00\x00\x00blocksq`]qa(}qb(X\x06\x00\x00\x00valuesqch2X\x08\x00\x00\x00mgr_locsqdc__builtin__\nslice\nqe(K\x01K\x02K\x01tqfRqgu}qh(hch?hdhe(K\x00K\x04K\x02tqiRqjueustqkbX\x04\x00\x00\x00_typqlX\t\x00\x00\x00dataframeqmX\t\x00\x00\x00_metadataqn]qoub.'
+>>> pickle.dumps(df, 2)
+b'\x80\x02cpandas.core.frame\nDataFrame\nq\x00)\x81q\x01}q\x02(X\x05\x00\x00\x00_dataq\x03cpandas.core.internals\nBlockManager\nq\x04)\x81q\x05(]q\x06(cpandas.core.indexes.base\n_new_Index\nq\x07cpandas.core.indexes.base\nIndex\nq\x08}q\t(X\x04\x00\x00\x00dataq\ncnumpy.core.multiarray\n_reconstruct\nq\x0bcnumpy\nndarray\nq\x0cK\x00\x85q\rc_codecs\nencode\nq\x0eX\x01\x00\x00\x00bq\x0fX\x06\x00\x00\x00latin1q\x10\x86q\x11Rq\x12\x87q\x13Rq\x14(K\x01K\x03\x85q\x15cnumpy\ndtype\nq\x16X\x02\x00\x00\x00O8q\x17K\x00K\x01\x87q\x18Rq\x19(K\x03X\x01\x00\x00\x00|q\x1aNNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK?tq\x1bb\x89]q\x1c(X\x04\x00\x00\x00nameq\x1dX\x04\x00\x00\x00 ageq\x1eX\t\x00\x00\x00 locationq\x1fetq bX\x04\x00\x00\x00nameq!Nu\x86q"Rq#h\x07cpandas.core.indexes.range\nRangeIndex\nq$}q%(h!NX\x05\x00\x00\x00startq&K\x00X\x04\x00\x00\x00stopq\'K\x03X\x04\x00\x00\x00stepq(K\x01u\x86q)Rq*e]q+(h\x0bh\x0cK\x00\x85q,h\x12\x87q-Rq.(K\x01K\x01K\x03\x86q/h\x16X\x02\x00\x00\x00i8q0K\x00K\x01\x87q1Rq2(K\x03X\x01\x00\x00\x00<q3NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK\x00tq4b\x89h\x0eX\x18\x00\x00\x00&\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x00\x00\x00\x00\x00\x1a\x00\x00\x00\x00\x00\x00\x00q5h\x10\x86q6Rq7tq8bh\x0bh\x0cK\x00\x85q9h\x12\x87q:Rq;(K\x01K\x02K\x03\x86q<h\x19\x89]q=(X\x05\x00\x00\x00Aaronq>X\x04\x00\x00\x00Fredq?X\x05\x00\x00\x00Susanq@X\t\x00\x00\x00 BrooklynqAX\x06\x00\x00\x00 BronxqBX\x07\x00\x00\x00 QueensqCetqDbe]qE(h\x07h\x08}qF(h\nh\x0bh\x0cK\x00\x85qGh\x12\x87qHRqI(K\x01K\x01\x85qJh\x19\x89]qKh\x1eatqLbh!Nu\x86qMRqNh\x07h\x08}qO(h\nh\x0bh\x0cK\x00\x85qPh\x12\x87qQRqR(K\x01K\x02\x85qSh\x19\x89]qT(h\x1dh\x1fetqUbh!Nu\x86qVRqWe}qXX\x06\x00\x00\x000.14.1qY}qZ(X\x04\x00\x00\x00axesq[h\x06X\x06\x00\x00\x00blocksq\\]q](}q^(X\x06\x00\x00\x00valuesq_h.X\x08\x00\x00\x00mgr_locsq`c__builtin__\nslice\nqaK\x01K\x02K\x01\x87qbRqcu}qd(h_h;h`haK\x00K\x04K\x02\x87qeRqfueustqgbX\x04\x00\x00\x00_typqhX\t\x00\x00\x00dataframeqiX\t\x00\x00\x00_metadataqj]qkub.'
+>>> pickle.dumps(df, 3)
+b'\x80\x03cpandas.core.frame\nDataFrame\nq\x00)\x81q\x01}q\x02(X\x05\x00\x00\x00_dataq\x03cpandas.core.internals\nBlockManager\nq\x04)\x81q\x05(]q\x06(cpandas.core.indexes.base\n_new_Index\nq\x07cpandas.core.indexes.base\nIndex\nq\x08}q\t(X\x04\x00\x00\x00dataq\ncnumpy.core.multiarray\n_reconstruct\nq\x0bcnumpy\nndarray\nq\x0cK\x00\x85q\rC\x01bq\x0e\x87q\x0fRq\x10(K\x01K\x03\x85q\x11cnumpy\ndtype\nq\x12X\x02\x00\x00\x00O8q\x13K\x00K\x01\x87q\x14Rq\x15(K\x03X\x01\x00\x00\x00|q\x16NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK?tq\x17b\x89]q\x18(X\x04\x00\x00\x00nameq\x19X\x04\x00\x00\x00 ageq\x1aX\t\x00\x00\x00 locationq\x1betq\x1cbX\x04\x00\x00\x00nameq\x1dNu\x86q\x1eRq\x1fh\x07cpandas.core.indexes.range\nRangeIndex\nq }q!(h\x1dNX\x05\x00\x00\x00startq"K\x00X\x04\x00\x00\x00stopq#K\x03X\x04\x00\x00\x00stepq$K\x01u\x86q%Rq&e]q\'(h\x0bh\x0cK\x00\x85q(h\x0e\x87q)Rq*(K\x01K\x01K\x03\x86q+h\x12X\x02\x00\x00\x00i8q,K\x00K\x01\x87q-Rq.(K\x03X\x01\x00\x00\x00<q/NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK\x00tq0b\x89C\x18&\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x00\x00\x00\x00\x00\x1a\x00\x00\x00\x00\x00\x00\x00q1tq2bh\x0bh\x0cK\x00\x85q3h\x0e\x87q4Rq5(K\x01K\x02K\x03\x86q6h\x15\x89]q7(X\x05\x00\x00\x00Aaronq8X\x04\x00\x00\x00Fredq9X\x05\x00\x00\x00Susanq:X\t\x00\x00\x00 Brooklynq;X\x06\x00\x00\x00 Bronxq<X\x07\x00\x00\x00 Queensq=etq>be]q?(h\x07h\x08}q@(h\nh\x0bh\x0cK\x00\x85qAh\x0e\x87qBRqC(K\x01K\x01\x85qDh\x15\x89]qEh\x1aatqFbh\x1dNu\x86qGRqHh\x07h\x08}qI(h\nh\x0bh\x0cK\x00\x85qJh\x0e\x87qKRqL(K\x01K\x02\x85qMh\x15\x89]qN(h\x19h\x1betqObh\x1dNu\x86qPRqQe}qRX\x06\x00\x00\x000.14.1qS}qT(X\x04\x00\x00\x00axesqUh\x06X\x06\x00\x00\x00blocksqV]qW(}qX(X\x06\x00\x00\x00valuesqYh*X\x08\x00\x00\x00mgr_locsqZcbuiltins\nslice\nq[K\x01K\x02K\x01\x87q\\Rq]u}q^(hYh5hZh[K\x00K\x04K\x02\x87q_Rq`ueustqabX\x04\x00\x00\x00_typqbX\t\x00\x00\x00dataframeqcX\t\x00\x00\x00_metadataqd]qeub.'
+>>> pickle.dumps(df, 4)
+b"\x80\x04\x95d\x03\x00\x00\x00\x00\x00\x00\x8c\x11pandas.core.frame\x94\x8c\tDataFrame\x94\x93\x94)\x81\x94}\x94(\x8c\x05_data\x94\x8c\x15pandas.core.internals\x94\x8c\x0cBlockManager\x94\x93\x94)\x81\x94(]\x94(\x8c\x18pandas.core.indexes.base\x94\x8c\n_new_Index\x94\x93\x94h\x0b\x8c\x05Index\x94\x93\x94}\x94(\x8c\x04data\x94\x8c\x15numpy.core.multiarray\x94\x8c\x0c_reconstruct\x94\x93\x94\x8c\x05numpy\x94\x8c\x07ndarray\x94\x93\x94K\x00\x85\x94C\x01b\x94\x87\x94R\x94(K\x01K\x03\x85\x94h\x15\x8c\x05dtype\x94\x93\x94\x8c\x02O8\x94K\x00K\x01\x87\x94R\x94(K\x03\x8c\x01|\x94NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK?t\x94b\x89]\x94(\x8c\x04name\x94\x8c\x04 age\x94\x8c\t location\x94et\x94b\x8c\x04name\x94Nu\x86\x94R\x94h\r\x8c\x19pandas.core.indexes.range\x94\x8c\nRangeIndex\x94\x93\x94}\x94(h)N\x8c\x05start\x94K\x00\x8c\x04stop\x94K\x03\x8c\x04step\x94K\x01u\x86\x94R\x94e]\x94(h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x01K\x03\x86\x94h\x1e\x8c\x02i8\x94K\x00K\x01\x87\x94R\x94(K\x03\x8c\x01<\x94NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK\x00t\x94b\x89C\x18&\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x00\x00\x00\x00\x00\x1a\x00\x00\x00\x00\x00\x00\x00\x94t\x94bh\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x02K\x03\x86\x94h!\x89]\x94(\x8c\x05Aaron\x94\x8c\x04Fred\x94\x8c\x05Susan\x94\x8c\t Brooklyn\x94\x8c\x06 Bronx\x94\x8c\x07 Queens\x94et\x94be]\x94(h\rh\x0f}\x94(h\x11h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x01\x85\x94h!\x89]\x94h&at\x94bh)Nu\x86\x94R\x94h\rh\x0f}\x94(h\x11h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x02\x85\x94h!\x89]\x94(h%h'et\x94bh)Nu\x86\x94R\x94e}\x94\x8c\x060.14.1\x94}\x94(\x8c\x04axes\x94h\n\x8c\x06blocks\x94]\x94(}\x94(\x8c\x06values\x94h8\x8c\x08mgr_locs\x94\x8c\x08builtins\x94\x8c\x05slice\x94\x93\x94K\x01K\x02K\x01\x87\x94R\x94u}\x94(hghChhhkK\x00K\x04K\x02\x87\x94R\x94ueust\x94b\x8c\x04_typ\x94\x8c\tdataframe\x94\x8c\t_metadata\x94]\x94ub."
+>>> pickle.dumps(df, -1)
+b"\x80\x04\x95d\x03\x00\x00\x00\x00\x00\x00\x8c\x11pandas.core.frame\x94\x8c\tDataFrame\x94\x93\x94)\x81\x94}\x94(\x8c\x05_data\x94\x8c\x15pandas.core.internals\x94\x8c\x0cBlockManager\x94\x93\x94)\x81\x94(]\x94(\x8c\x18pandas.core.indexes.base\x94\x8c\n_new_Index\x94\x93\x94h\x0b\x8c\x05Index\x94\x93\x94}\x94(\x8c\x04data\x94\x8c\x15numpy.core.multiarray\x94\x8c\x0c_reconstruct\x94\x93\x94\x8c\x05numpy\x94\x8c\x07ndarray\x94\x93\x94K\x00\x85\x94C\x01b\x94\x87\x94R\x94(K\x01K\x03\x85\x94h\x15\x8c\x05dtype\x94\x93\x94\x8c\x02O8\x94K\x00K\x01\x87\x94R\x94(K\x03\x8c\x01|\x94NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK?t\x94b\x89]\x94(\x8c\x04name\x94\x8c\x04 age\x94\x8c\t location\x94et\x94b\x8c\x04name\x94Nu\x86\x94R\x94h\r\x8c\x19pandas.core.indexes.range\x94\x8c\nRangeIndex\x94\x93\x94}\x94(h)N\x8c\x05start\x94K\x00\x8c\x04stop\x94K\x03\x8c\x04step\x94K\x01u\x86\x94R\x94e]\x94(h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x01K\x03\x86\x94h\x1e\x8c\x02i8\x94K\x00K\x01\x87\x94R\x94(K\x03\x8c\x01<\x94NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK\x00t\x94b\x89C\x18&\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x00\x00\x00\x00\x00\x1a\x00\x00\x00\x00\x00\x00\x00\x94t\x94bh\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x02K\x03\x86\x94h!\x89]\x94(\x8c\x05Aaron\x94\x8c\x04Fred\x94\x8c\x05Susan\x94\x8c\t Brooklyn\x94\x8c\x06 Bronx\x94\x8c\x07 Queens\x94et\x94be]\x94(h\rh\x0f}\x94(h\x11h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x01\x85\x94h!\x89]\x94h&at\x94bh)Nu\x86\x94R\x94h\rh\x0f}\x94(h\x11h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x02\x85\x94h!\x89]\x94(h%h'et\x94bh)Nu\x86\x94R\x94e}\x94\x8c\x060.14.1\x94}\x94(\x8c\x04axes\x94h\n\x8c\x06blocks\x94]\x94(}\x94(\x8c\x06values\x94h8\x8c\x08mgr_locs\x94\x8c\x08builtins\x94\x8c\x05slice\x94\x93\x94K\x01K\x02K\x01\x87\x94R\x94u}\x94(hghChhhkK\x00K\x04K\x02\x87\x94R\x94ueust\x94b\x8c\x04_typ\x94\x8c\tdataframe\x94\x8c\t_metadata\x94]\x94ub."
+>>> import pickle
+>>> pickle.dumps(df, -1)
+b"\x80\x04\x95d\x03\x00\x00\x00\x00\x00\x00\x8c\x11pandas.core.frame\x94\x8c\tDataFrame\x94\x93\x94)\x81\x94}\x94(\x8c\x05_data\x94\x8c\x15pandas.core.internals\x94\x8c\x0cBlockManager\x94\x93\x94)\x81\x94(]\x94(\x8c\x18pandas.core.indexes.base\x94\x8c\n_new_Index\x94\x93\x94h\x0b\x8c\x05Index\x94\x93\x94}\x94(\x8c\x04data\x94\x8c\x15numpy.core.multiarray\x94\x8c\x0c_reconstruct\x94\x93\x94\x8c\x05numpy\x94\x8c\x07ndarray\x94\x93\x94K\x00\x85\x94C\x01b\x94\x87\x94R\x94(K\x01K\x03\x85\x94h\x15\x8c\x05dtype\x94\x93\x94\x8c\x02O8\x94K\x00K\x01\x87\x94R\x94(K\x03\x8c\x01|\x94NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK?t\x94b\x89]\x94(\x8c\x04name\x94\x8c\x04 age\x94\x8c\t location\x94et\x94b\x8c\x04name\x94Nu\x86\x94R\x94h\r\x8c\x19pandas.core.indexes.range\x94\x8c\nRangeIndex\x94\x93\x94}\x94(h)N\x8c\x05start\x94K\x00\x8c\x04stop\x94K\x03\x8c\x04step\x94K\x01u\x86\x94R\x94e]\x94(h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x01K\x03\x86\x94h\x1e\x8c\x02i8\x94K\x00K\x01\x87\x94R\x94(K\x03\x8c\x01<\x94NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK\x00t\x94b\x89C\x18&\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x00\x00\x00\x00\x00\x1a\x00\x00\x00\x00\x00\x00\x00\x94t\x94bh\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x02K\x03\x86\x94h!\x89]\x94(\x8c\x05Aaron\x94\x8c\x04Fred\x94\x8c\x05Susan\x94\x8c\t Brooklyn\x94\x8c\x06 Bronx\x94\x8c\x07 Queens\x94et\x94be]\x94(h\rh\x0f}\x94(h\x11h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x01\x85\x94h!\x89]\x94h&at\x94bh)Nu\x86\x94R\x94h\rh\x0f}\x94(h\x11h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x02\x85\x94h!\x89]\x94(h%h'et\x94bh)Nu\x86\x94R\x94e}\x94\x8c\x060.14.1\x94}\x94(\x8c\x04axes\x94h\n\x8c\x06blocks\x94]\x94(}\x94(\x8c\x06values\x94h8\x8c\x08mgr_locs\x94\x8c\x08builtins\x94\x8c\x05slice\x94\x93\x94K\x01K\x02K\x01\x87\x94R\x94u}\x94(hghChhhkK\x00K\x04K\x02\x87\x94R\x94ueust\x94b\x8c\x04_typ\x94\x8c\tdataframe\x94\x8c\t_metadata\x94]\x94ub."
+>>> help(pickle.dump)
+
+>>> pickle.dump(df, open('example.pickle', 'wb'), 4)
+>>> with open('example.pickle', 'wb') as f:
+...     pickle.dump(df, f, protocol=4)
+... 
+>>> with open('example.pickle', 'rb') as f:
+...     print(f.read())
+... 
+b"\x80\x04\x95d\x03\x00\x00\x00\x00\x00\x00\x8c\x11pandas.core.frame\x94\x8c\tDataFrame\x94\x93\x94)\x81\x94}\x94(\x8c\x05_data\x94\x8c\x15pandas.core.internals\x94\x8c\x0cBlockManager\x94\x93\x94)\x81\x94(]\x94(\x8c\x18pandas.core.indexes.base\x94\x8c\n_new_Index\x94\x93\x94h\x0b\x8c\x05Index\x94\x93\x94}\x94(\x8c\x04data\x94\x8c\x15numpy.core.multiarray\x94\x8c\x0c_reconstruct\x94\x93\x94\x8c\x05numpy\x94\x8c\x07ndarray\x94\x93\x94K\x00\x85\x94C\x01b\x94\x87\x94R\x94(K\x01K\x03\x85\x94h\x15\x8c\x05dtype\x94\x93\x94\x8c\x02O8\x94K\x00K\x01\x87\x94R\x94(K\x03\x8c\x01|\x94NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK?t\x94b\x89]\x94(\x8c\x04name\x94\x8c\x04 age\x94\x8c\t location\x94et\x94b\x8c\x04name\x94Nu\x86\x94R\x94h\r\x8c\x19pandas.core.indexes.range\x94\x8c\nRangeIndex\x94\x93\x94}\x94(h)N\x8c\x05start\x94K\x00\x8c\x04stop\x94K\x03\x8c\x04step\x94K\x01u\x86\x94R\x94e]\x94(h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x01K\x03\x86\x94h\x1e\x8c\x02i8\x94K\x00K\x01\x87\x94R\x94(K\x03\x8c\x01<\x94NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK\x00t\x94b\x89C\x18&\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x00\x00\x00\x00\x00\x1a\x00\x00\x00\x00\x00\x00\x00\x94t\x94bh\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x02K\x03\x86\x94h!\x89]\x94(\x8c\x05Aaron\x94\x8c\x04Fred\x94\x8c\x05Susan\x94\x8c\t Brooklyn\x94\x8c\x06 Bronx\x94\x8c\x07 Queens\x94et\x94be]\x94(h\rh\x0f}\x94(h\x11h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x01\x85\x94h!\x89]\x94h&at\x94bh)Nu\x86\x94R\x94h\rh\x0f}\x94(h\x11h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x02\x85\x94h!\x89]\x94(h%h'et\x94bh)Nu\x86\x94R\x94e}\x94\x8c\x060.14.1\x94}\x94(\x8c\x04axes\x94h\n\x8c\x06blocks\x94]\x94(}\x94(\x8c\x06values\x94h8\x8c\x08mgr_locs\x94\x8c\x08builtins\x94\x8c\x05slice\x94\x93\x94K\x01K\x02K\x01\x87\x94R\x94u}\x94(hghChhhkK\x00K\x04K\x02\x87\x94R\x94ueust\x94b\x8c\x04_typ\x94\x8c\tdataframe\x94\x8c\t_metadata\x94]\x94ub."
+>>> with open('example.pickle', 'rb') as f:
+...     the_bytes = f.read()
+... 
+>>> the_bytes
+b"\x80\x04\x95d\x03\x00\x00\x00\x00\x00\x00\x8c\x11pandas.core.frame\x94\x8c\tDataFrame\x94\x93\x94)\x81\x94}\x94(\x8c\x05_data\x94\x8c\x15pandas.core.internals\x94\x8c\x0cBlockManager\x94\x93\x94)\x81\x94(]\x94(\x8c\x18pandas.core.indexes.base\x94\x8c\n_new_Index\x94\x93\x94h\x0b\x8c\x05Index\x94\x93\x94}\x94(\x8c\x04data\x94\x8c\x15numpy.core.multiarray\x94\x8c\x0c_reconstruct\x94\x93\x94\x8c\x05numpy\x94\x8c\x07ndarray\x94\x93\x94K\x00\x85\x94C\x01b\x94\x87\x94R\x94(K\x01K\x03\x85\x94h\x15\x8c\x05dtype\x94\x93\x94\x8c\x02O8\x94K\x00K\x01\x87\x94R\x94(K\x03\x8c\x01|\x94NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK?t\x94b\x89]\x94(\x8c\x04name\x94\x8c\x04 age\x94\x8c\t location\x94et\x94b\x8c\x04name\x94Nu\x86\x94R\x94h\r\x8c\x19pandas.core.indexes.range\x94\x8c\nRangeIndex\x94\x93\x94}\x94(h)N\x8c\x05start\x94K\x00\x8c\x04stop\x94K\x03\x8c\x04step\x94K\x01u\x86\x94R\x94e]\x94(h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x01K\x03\x86\x94h\x1e\x8c\x02i8\x94K\x00K\x01\x87\x94R\x94(K\x03\x8c\x01<\x94NNNJ\xff\xff\xff\xffJ\xff\xff\xff\xffK\x00t\x94b\x89C\x18&\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x00\x00\x00\x00\x00\x1a\x00\x00\x00\x00\x00\x00\x00\x94t\x94bh\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x02K\x03\x86\x94h!\x89]\x94(\x8c\x05Aaron\x94\x8c\x04Fred\x94\x8c\x05Susan\x94\x8c\t Brooklyn\x94\x8c\x06 Bronx\x94\x8c\x07 Queens\x94et\x94be]\x94(h\rh\x0f}\x94(h\x11h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x01\x85\x94h!\x89]\x94h&at\x94bh)Nu\x86\x94R\x94h\rh\x0f}\x94(h\x11h\x14h\x17K\x00\x85\x94h\x19\x87\x94R\x94(K\x01K\x02\x85\x94h!\x89]\x94(h%h'et\x94bh)Nu\x86\x94R\x94e}\x94\x8c\x060.14.1\x94}\x94(\x8c\x04axes\x94h\n\x8c\x06blocks\x94]\x94(}\x94(\x8c\x06values\x94h8\x8c\x08mgr_locs\x94\x8c\x08builtins\x94\x8c\x05slice\x94\x93\x94K\x01K\x02K\x01\x87\x94R\x94u}\x94(hghChhhkK\x00K\x04K\x02\x87\x94R\x94ueust\x94b\x8c\x04_typ\x94\x8c\tdataframe\x94\x8c\t_metadata\x94]\x94ub."
+>>> for byte in the_bytes[:10]: 
+...     print(byte)
+... 
+128
+4
+149
+100
+3
+0
+0
+0
+0
+0
+>>> ord('a')
+97
+>>> ord('b')
+98
+>>> ord('A')
+65
+>>> ord('B')
+66
+>>> ord(' ')
+32
+>>> ord('\t')
+9
+>>> ord('\n')
+10
+>>> ord('\b')
+8
+>>> ord('\r')
+13
+>>> ord('"')
+34
+>>> ord('\'')
+39
+>>> 2 ** 32
+4294967296
+>>> 2**21
+2097152
+>>> s = "a string"
+>>> s.upper()
+'A STRING'
+>>> str.upper(s)
+'A STRING'
+>>> b = b"a bytes object"
+>>> b
+b'a bytes object'
+>>> b.upper()
+b'A BYTES OBJECT'
+>>> str.upper(b)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: descriptor 'upper' requires a 'str' object but received a 'bytes'
+>>> object
+<class 'object'>
+>>> b
+b'a bytes object'
+>>> type(b)
+<class 'bytes'>
+>>> type(b).mro()
+[<class 'bytes'>, <class 'object'>]
