@@ -1,12 +1,14 @@
+
+
 run the tests with:
 
 $ python -m tests
 
-run the code with:
+Run the program with:
 
 $ python -m pythontrainer
 
-run coverage with:
+run coverage with (may need to conda install coverage or pip install coverage):
 
 $ python -m coverage run -m tests
 
@@ -18,3 +20,7 @@ then view the html report with (insert your own browser maybe):
 
 $ browser htmlcov/index.html
 
+
+View other style issues with pylint:
+
+python -m pylint pythontrainer.py tests.py
