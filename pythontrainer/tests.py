@@ -1,3 +1,4 @@
+import doctest
 import unittest
 import pythontrainer
 
@@ -40,6 +41,12 @@ class TestCase(unittest.TestCase):
         str_methods = pythontrainer.list_of_methods(str)
         self.assertIsInstance(str_methods, list)
         self.assertIn(str.upper, str_methods)
+
+
+def load_tests(loader, tests, ignore):
+    tests.addTests(doctest.DocTestSuite(pythontrainer))
+    return tests
+
 
 def main():
     unittest.main(exit=False)

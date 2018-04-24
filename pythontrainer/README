@@ -1,0 +1,20 @@
+run the tests with:
+
+$ python -m tests
+
+run the code with:
+
+$ python -m pythontrainer
+
+run coverage with:
+
+$ python -m coverage run -m tests
+
+create the html report with:
+
+$ python -m coverage html
+
+then view the html report with (insert your own browser maybe):
+
+$ browser htmlcov/index.html
+
