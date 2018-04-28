@@ -1,0 +1,10 @@
+
+
+* Review Quiz
+* Code Quality
+- Code that we've written
+- Review other code-bases
+- pylint
+- doctest
+- coverage
+
